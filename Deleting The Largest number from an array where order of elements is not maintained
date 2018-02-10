@@ -1,0 +1,45 @@
+//Deleting The Largest number from an array where order of elements is not maintained.
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int i=0,j,num;
+    int arr[i];
+    cout<<"Enter the size of an array:";
+    cin>>num;
+    for(i=0;i<num;i++)
+    {
+        cin>>arr[i];
+    }
+    cout<<endl;
+     for(i=0;i<num;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+    cout<<"After the largest number is deleted:";
+    cout<<endl;
+    for(i=0;i<num;i++)
+    {    j=i+1;
+        if(arr[i]>arr[j])
+        {
+            swap(arr[i],arr[j]);
+        }
+    }
+    arr[num]=NULL;
+    for(i=0;i<num-1;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    return 0;
+}
+
+
+
+
+
+
+
