@@ -1,0 +1,22 @@
+#include <iostream>
+#include<string.h>
+
+using namespace std;
+
+int main()
+{
+    int i,j,num;
+    cout<<"Enter the number of names=";
+    cin>>num;
+    string name[num];
+    for(i=0;i<=num-1;i++)
+    {
+    getline(cin,name[i]);
+    cout<<"\n";
+    }
+    for(j=0;j<=num-1;j++)
+    {
+        cout<<name[j]<<"\n";
+    }
+    return 0;
+}
