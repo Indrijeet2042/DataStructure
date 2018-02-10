@@ -1,0 +1,106 @@
+#include <iostream>
+#include<stdio.h>
+#include<stdlib.h>
+
+using namespace std;
+
+struct node
+{
+    int info;
+    struct node *link;
+};
+
+struct node * START=NULL;
+
+
+struct node *CreateNode()
+{
+    struct node *n=new node;
+    return(n);
+};
+
+void insert_node()
+{
+    int x;
+    struct node *temp,*t;
+    temp=CreateNode();
+    cout<<"Enter a number to be inserted::";
+    cin>>x;
+    temp->info=x;
+    temp->link=NULL;
+    t=START;
+    if(START==NULL)
+       START=temp;
+    else
+    {
+        while(t->link !=NULL)
+        {
+            t=t->link;
+        }
+        t -> link = temp;
+    }
+}
+void delete_first()
+{
+    struct node *x=new node;
+    x=START;
+    START=x->link;
+    int num=x->info;
+    delete x;
+    cout<<"the deleted number is"<<num;
+}
+void display()
+{
+    struct node *value=START;
+    if(value==NULL)
+        cout<<"There is no node";
+    else
+    {
+        while(value!=NULL)
+        {
+        cout<<value->info<<"\t";
+        value=value->link;
+        }
+    }
+    cout << endl;
+}
+
+int main()
+{
+    cout << "If you want to enter a number press 2::" << endl;
+    cout<<"If you want to display the list press 3::"<<endl;
+    cout<<"If you want to delete the first node press 4::"<<endl;
+
+     int i;
+    while(1){
+        cout<<"Enter your choice::";
+        cin>>i;
+        switch(i)
+        {
+            case 2:
+                insert_node();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                delete_first();
+                break;
+            default:
+                exit(0);
+        }
+    }
+    return (0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
