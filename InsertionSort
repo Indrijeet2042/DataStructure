@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int i,j,temp,num,x;
+    cout<<"Enter the size of array:";
+    cin>>num;
+    for(i=0;i<num;i++)
+    {
+        cin>>x;
+        a[i]=x;
+    }
+    for(i=1;i<num;i++)
+    {
+        temp=a[i];
+        j=i-1;
+        while(j>=0 && a[j]>temp)
+        {
+          a[j+1]=a[j];
+          j--;
+        }
+        a[j+1]=temp;
+    }
+    return 0;
+}
