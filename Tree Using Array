@@ -1,0 +1,47 @@
+#include <iostream>
+#include<stdio.h>
+
+using namespace std;
+
+class BST
+{
+    int arr[1000];
+public:
+   BST(){ for(int i=0;i<1000;i++)
+        arr[i]=0;
+   }
+
+void Insert(int x)
+{
+    int i=1;
+    while(arr[i]!=0)
+    {
+        if(x<arr[i])
+            i=2*i;
+        else if(x>arr[i])
+            i=2*i+1;
+        else
+            return;
+    }
+    arr[i]=x;
+}
+void inorder(int root)
+{
+    if(arr[root]==0)
+        return;
+    inorder(2*root);
+    cout<<arr[root]<<"\n";
+    inorder(2*root+1);
+}
+};
+int main()
+{
+    BST obj;
+    obj.Insert(60);
+    obj.Insert(70);
+    obj.Insert(40);
+    obj.Insert(100);
+    obj.Insert(120);
+    obj.inorder(1);
+    return 0;
+}
