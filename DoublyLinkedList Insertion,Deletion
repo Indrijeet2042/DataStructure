@@ -1,0 +1,131 @@
+#include <iostream>
+#include<stdlib.h>
+#include<stdio.h>
+
+using namespace std;
+
+struct Dll
+{
+    int info;
+    struct Dll *pre,*next;
+    Dll()
+    {
+        pre=NULL;
+        next=NULL;
+    }
+};
+
+struct Dll *START=NULL;
+
+struct Dll *CreateNode()
+{
+    struct Dll *n=new Dll;
+    int x;
+    cout<<"Enter the number to be inserted::";
+    cin>>x;
+    n->info=x;
+    return(n);
+}
+void CreateList()
+{
+    struct Dll *ptr=NULL,*Temp;
+    Temp=START;
+    ptr=CreateNode();
+    if(START==NULL)
+    {
+        START=ptr;
+    }
+    else
+        {
+            while(Temp->next!=NULL)
+            {
+                Temp=Temp->next;
+            }
+            Temp->next=ptr;
+            ptr->pre=Temp;
+        }
+}
+
+void display()
+{
+    struct Dll *ind=new Dll;
+    ind=START;
+    while(ind!=NULL)
+        {
+        cout<<ind->info<<"\t" ;
+        ind=ind->next;
+        }
+        cout<<"\n";
+}
+void Delete()//from 60-74 lines are used to delete node at any location between first node and last node.
+{
+    struct Dll *ind;
+    ind=START;
+    cout<<"Enter the position of node to be deleted::";
+    int x;
+    cin>>x;
+    for(int i=1;i<x;i++)
+    {
+        ind=ind->next;
+    }
+    ind->next->pre=ind->pre;
+    ind->pre->next=ind->next;
+    delete ind;
+}
+void DeleteFirstNode()
+{
+    struct Dll *ptr;
+    ptr=START;
+    START=START->next;
+    START->pre=NULL;
+    delete ptr;
+}
+void DeleteLastNode()
+{
+    struct Dll *ptr;
+    ptr=START;
+    while(ptr->next!=NULL)
+    {
+        ptr=ptr->next;
+    }
+    ptr->pre->next=NULL;
+    delete ptr;
+}
+
+int main()
+{
+    int i;
+    cout<<"Press 2 to enter a number in list::\n";
+    cout<<"Press 3 to delete node at any position::\n";
+    cout<<"Press 4 to delete the first node::\n";
+    cout<<"Press 5 to delete the last node::\n";
+    cout<<"press 6 to display the list::\n";
+    while(1)
+    {
+        cout<<"Enter your choice::";
+        cin>>i;
+    switch(i)
+    {
+    case 2:
+        CreateList();
+        break;
+    case 3:
+        Delete();
+        break;
+    case 6:
+        display();
+        break;
+    case 4:
+        DeleteFirstNode();
+        break;
+    case 5:
+        DeleteLastNode();
+        break;
+    default:
+        {
+        cout<<"The choice you entered is wrong::";
+        }
+    }
+    }
+    return 0;
+}
