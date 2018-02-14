@@ -1,0 +1,38 @@
+//BubbleSort: In this sorting technique first two element are compared
+//If the left element if greater than the second element then the elements are exchanged
+//Otherwise the elements are left as it is and value of counter is increased by 1 to read the next node.
+/*C++ Program To Sort data in ascending order using bubble sort.*/
+#include <stdio.h>
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+    cout<<"Enter the size of an array::";
+    int k;
+    cin>>k;
+    int data[k],i,n,step,temp;
+    cout<<"Enter the number of elements to be sorted::";
+    cin>>n;
+    cout<<"Enter the elements::";
+    for(i=0;i<n;++i)
+    {
+        cin>>data[i];
+    }
+
+    for(step=0;step<n-1;++step)
+    for(i=0;i<n-step-1;++i)
+    {
+        if(data[i]>data[i+1])   
+        {
+            temp=data[i];
+            data[i]=data[i+1];
+            data[i+1]=temp;
+        }
+    }
+    cout<<"In ascending order: ";
+    for(i=0;i<n;++i)
+         cout<<data[i]<<" ";
+    return 0;
+}
