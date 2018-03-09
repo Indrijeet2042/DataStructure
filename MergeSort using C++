@@ -1,0 +1,85 @@
+#include <iostream>
+
+using namespace std;
+
+void Merge(int arr[],int p,int q,int r);
+void Divide(int arr[],int p,int r);
+void Display(int arr[],int Size);
+
+int main()
+{
+    int Size,i;
+    int arr[i];
+    cout<<"Enter the size of the array::";
+    cin>>Size;
+    cout<<"Enter the elements in the array::";
+    for(int i=0;i<Size;i++)
+        cin>>arr[i];
+    Merge( arr,0,(Size-1)/2,Size);
+    Divide( arr, 0, Size);
+    Display(arr, Size);
+    return 0;
+}
+void Merge(int arr[],int p,int q,int r)
+{
+    int n1=q-p+1;
+    int n2=r-q;
+    int arr1[n1],arr2[n2];
+    for(int i=0;i<n1;i++)
+        arr1[i]=arr[p+i];
+    for(int j=0;j<n2;j++)
+        arr2[j]=arr[q+ 1 + j];
+    int i=0,j=0,k=0;
+    while(i<n1&&j<n2)
+    {
+        if(arr1[i]<arr2[j])
+        {
+            arr[k]=arr1[i];
+            i++;
+        }
+        else
+        {
+            arr[i]=arr2[j];
+            j++;
+        }
+        k++;
+    }
+    while(i<n1)
+    {
+        arr[k]=arr1[i];
+        i++;k++;
+    }
+    while(j<n2)
+    {
+        arr[k]=arr2[j];
+        j++;k++;
+    }
+
+}
+void Divide(int arr[],int p,int r)
+{
+    if(p<r)
+    {
+        int q;
+        q=p+(r-1)/2;
+        Divide(arr,p,q);
+        Divide(arr,q+1,r);
+        Merge(arr,p,q,r);
+    }
+}
+void Display(int arr[],int Size)
+{
+    for(int i=0;i<Size;i++)
+        cout<<arr[i]<<" ";
+}
+
+
+
+
+
+
+
+
+
+
+
