@@ -15,7 +15,6 @@ public:
                 if(intervals[j][0] <= intervals[i][0] && intervals[j][1] >= intervals[i][1])
                 {
                     covered[i] = true;
-                    break;
                 }
             }
         }
